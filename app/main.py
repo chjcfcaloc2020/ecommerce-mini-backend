@@ -3,7 +3,7 @@ from app.db import database
 from app.db.database import Base
 from app.api import router
 
-Base.metadata.create_all(bind=database.engine)
+# Base.metadata.create_all(bind=database.engine)
 
 def create_app():
   app = FastAPI(title="Mini E-commerce API")
