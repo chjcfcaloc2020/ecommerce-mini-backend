@@ -1,7 +1,6 @@
 from fastapi import FastAPI
-from sqlalchemy.orm import Session
 from app.db import database
-from app.models.user import Base
+from app.db.database import Base
 from app.api import router
 
 Base.metadata.create_all(bind=database.engine)
