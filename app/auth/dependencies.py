@@ -26,3 +26,11 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_
   if user is None:
     raise credentials_exception
   return user
+
+def check_admin(current_user: User = Depends(get_current_user)):
+  if current_user.role != "admin":
+    raise HTTPException(
+      status_code=status.HTTP_403_FORBIDDEN,
+      detail="Bạn không có quyền thực hiện hành động này"
+    )
+  return current_user
